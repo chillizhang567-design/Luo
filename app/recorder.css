@@ -1,0 +1,1300 @@
+.drift-experience,
+.chapter-frame,
+.recorder-scene {
+  width: 100%;
+  height: 100svh;
+  min-height: 620px;
+}
+
+.drift-experience {
+  position: relative;
+  overflow: hidden;
+  background: #05070c;
+}
+
+.chapter-frame {
+  position: absolute;
+  inset: 0;
+}
+
+.recorder-scene {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  color: #ead7b1;
+  background: #100d0d;
+}
+
+.recorder-camera {
+  position: absolute;
+  inset: 0;
+  transform-origin: 67% 45%;
+}
+
+.recorder-cabin-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.recorder-scene::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(6, 8, 13, 0.36), transparent 44%),
+    radial-gradient(circle at 17% 55%, rgba(220, 141, 61, 0.08), transparent 28%),
+    linear-gradient(180deg, rgba(3, 5, 8, 0.12), transparent 35%, rgba(2, 3, 5, 0.28));
+}
+
+.recorder-scene::after {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  z-index: 8;
+  pointer-events: none;
+  opacity: 0.12;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.86' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.48'/%3E%3C/svg%3E");
+  animation: recorder-grain 0.34s steps(2) infinite;
+  mix-blend-mode: soft-light;
+}
+
+/* Strict vertical hierarchy: chapter title → main title → introduction →
+ * question. Each tier is a flex child with its own guaranteed gap, so the
+ * sections can never overlap at any screen size. */
+.recorder-copy {
+  position: absolute;
+  z-index: 4;
+  top: clamp(16px, 3vh, 40px);
+  left: clamp(24px, 4.4vw, 78px);
+  width: min(33vw, 430px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(12px, 2vh, 24px);
+  pointer-events: none;
+  text-shadow: 0 2px 20px rgba(4, 4, 7, 0.65);
+}
+
+.recorder-kicker {
+  display: block;
+  margin: 0;
+  color: rgba(223, 181, 117, 0.62);
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-size: clamp(8px, 0.68vw, 12px);
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.recorder-copy h1 {
+  display: block;
+  margin: 0;
+  color: #f1d8a7;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(32px, 3.6vw, 62px);
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  line-height: 0.98;
+}
+
+.recorder-welcome {
+  display: block;
+  margin: 0;
+  color: rgba(234, 220, 190, 0.78);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(12px, 1.02vw, 17px);
+  line-height: 1.6;
+}
+
+.recorder-welcome p {
+  margin: 0 0 clamp(6px, 1vh, 12px);
+}
+
+.recorder-welcome p:last-child {
+  margin-bottom: 0;
+}
+
+/* The 4th tier — the opening question — shown before a path is chosen. */
+.recorder-intro-question {
+  display: block;
+  margin: 0;
+  max-width: 30ch;
+  color: rgba(240, 214, 165, 0.9);
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-size: clamp(13px, 1.2vw, 20px);
+  line-height: 1.4;
+  white-space: pre-line;
+}
+
+.firstperson-desk-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.recorder-question {
+  position: absolute;
+  z-index: 5;
+  top: clamp(220px, 34vh, 360px);
+  left: clamp(34px, 6.4vw, 112px);
+  width: min(42vw, 620px);
+  color: #f3dfb9;
+  text-shadow: 0 2px 24px rgba(3, 3, 5, 0.8);
+}
+
+.question-rule {
+  display: block;
+  width: clamp(38px, 4vw, 70px);
+  height: 1px;
+  margin-bottom: clamp(14px, 2vh, 24px);
+  background: linear-gradient(90deg, #d8aa65, transparent);
+}
+
+.recorder-question p {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(20px, 2.15vw, 36px);
+  font-weight: 400;
+  line-height: 1.28;
+}
+
+.memory-page {
+  position: absolute;
+  z-index: 7;
+  left: 34.5%;
+  top: 76.5%;
+  width: 22%;
+  height: 15%;
+  min-height: 58px;
+  color: #3d2c20;
+  filter: drop-shadow(0 7px 8px rgba(10, 6, 5, 0.3));
+}
+
+.memory-page textarea {
+  width: 100%;
+  height: 100%;
+  resize: none;
+  border: 0;
+  border-radius: 1px;
+  outline: none;
+  padding: 10px 12px 18px;
+  overflow: auto;
+  color: #413125;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 18px,
+      rgba(89, 65, 46, 0.16) 18px,
+      rgba(89, 65, 46, 0.16) 19px
+    ),
+    rgba(238, 218, 169, 0.94);
+  box-shadow:
+    inset 3px 0 0 rgba(127, 66, 45, 0.4),
+    inset 0 0 18px rgba(115, 76, 43, 0.12);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(10px, 0.9vw, 15px);
+  line-height: 19px;
+}
+
+.memory-page textarea::placeholder {
+  color: rgba(69, 49, 34, 0.54);
+  font-style: italic;
+}
+
+.memory-page textarea:focus {
+  box-shadow:
+    inset 3px 0 0 rgba(127, 66, 45, 0.5),
+    inset 0 0 20px rgba(115, 76, 43, 0.16),
+    0 0 0 1px rgba(234, 198, 127, 0.3);
+}
+
+.memory-caret {
+  position: absolute;
+  right: 9px;
+  bottom: 5px;
+  color: rgba(75, 51, 34, 0.48);
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-size: clamp(6px, 0.48vw, 8px);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+/* ── Interview surface: diary seated at the desk ── */
+
+.interview-surface {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  pointer-events: none;
+}
+
+.interview-surface > * {
+  pointer-events: auto;
+}
+
+.question-line {
+  display: block;
+}
+
+.prompt-reset {
+  display: inline-block;
+  margin: 10px 0 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: rgba(234, 215, 180, 0.5);
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-size: clamp(8px, 0.72vw, 11px);
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: color 0.4s ease;
+}
+
+.prompt-reset:hover {
+  color: rgba(234, 215, 180, 0.78);
+}
+
+/* ── The diary book ── */
+
+.diary {
+  position: absolute;
+  z-index: 6;
+  left: 50%;
+  top: 55%;
+  transform: translate(-50%, -54%);
+  width: clamp(540px, 60vw, 880px);
+  height: clamp(296px, 46vh, 500px);
+  display: flex;
+  border-radius: 4px;
+  box-shadow:
+    0 44px 96px rgba(3, 2, 4, 0.55),
+    inset 0 0 60px rgba(40, 26, 16, 0.16);
+  filter: drop-shadow(0 2px 0 rgba(0, 0, 0, 0.2));
+}
+
+.diary-binding {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 16px;
+  transform: translateX(-50%);
+  z-index: 3;
+  background: linear-gradient(
+    90deg,
+    rgba(18, 11, 7, 0.5),
+    rgba(70, 44, 26, 0.22),
+    rgba(18, 11, 7, 0.5)
+  );
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.45);
+}
+
+.diary-page {
+  position: relative;
+  flex: 1 1 50%;
+  padding: clamp(18px, 2.2vw, 38px) clamp(20px, 2.4vw, 42px);
+  overflow: hidden;
+}
+
+.diary-page-left {
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 25px,
+      rgba(120, 90, 60, 0.13) 25px,
+      rgba(120, 90, 60, 0.13) 26px
+    ),
+    linear-gradient(160deg, #f3e7c8 0%, #e9d9b4 100%);
+  border-radius: 3px 0 0 3px;
+  box-shadow: inset 16px 0 26px rgba(120, 86, 52, 0.14);
+}
+
+.diary-page-right {
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 25px,
+      rgba(120, 90, 60, 0.13) 25px,
+      rgba(120, 90, 60, 0.13) 26px
+    ),
+    linear-gradient(200deg, #efe2c0 0%, #e4d2a8 100%);
+  border-radius: 0 3px 3px 0;
+  box-shadow: inset -16px 0 26px rgba(120, 86, 52, 0.14);
+  display: flex;
+  flex-direction: column;
+}
+
+.diary-page-label {
+  display: block;
+  margin: 0 0 12px;
+  color: rgba(120, 80, 50, 0.55);
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-size: clamp(8px, 0.7vw, 11px);
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.diary-left-body {
+  position: relative;
+}
+
+/* The Recorder's words read as ink on the page. */
+.recorder-response-wrap.is-diary .recorder-response-text {
+  color: #3a2a1c;
+  font-style: italic;
+  font-family: "Segoe Script", "Bradley Hand", "Comic Sans MS", "Brush Script MT", cursive;
+  font-size: clamp(15px, 1.5vw, 26px);
+  line-height: 1.5;
+  text-shadow: none;
+}
+
+.recorder-response-wrap.is-diary .question-rule {
+  background: linear-gradient(90deg, #9c6a3c, transparent);
+  margin-bottom: 14px;
+}
+
+.recorder-response-wrap.is-diary .recording-indicator {
+  color: rgba(150, 90, 50, 0.82);
+}
+
+.ink-caret {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  margin-left: 2px;
+  background: #6b4423;
+  vertical-align: -2px;
+  animation: ink-blink 1s steps(2) infinite;
+}
+
+@keyframes ink-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* The person's writing on the right page. */
+.diary-textarea {
+  flex: 1 1 auto;
+  width: 100%;
+  resize: none;
+  border: 0;
+  outline: none;
+  background: transparent;
+  padding: 0;
+  color: #3a2a1c;
+  font-family: "Segoe Script", "Bradley Hand", "Comic Sans MS", "Brush Script MT", cursive;
+  font-size: clamp(15px, 1.5vw, 26px);
+  line-height: 26px;
+  overflow: auto;
+  caret-color: #6b4423;
+}
+
+.diary-textarea::placeholder {
+  color: rgba(120, 80, 50, 0.42);
+  font-style: italic;
+}
+
+.diary-textarea:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.diary-pencil {
+  position: absolute;
+  right: 16px;
+  bottom: 12px;
+  z-index: 4;
+  transform-origin: 62% 62%;
+  pointer-events: none;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+}
+
+.diary-caret {
+  position: absolute;
+  right: 12px;
+  bottom: 3px;
+  color: rgba(110, 70, 40, 0.5);
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-size: clamp(6px, 0.5vw, 9px);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.diary-door-hint {
+  position: absolute;
+  z-index: 5;
+  left: 50%;
+  top: 36px;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: calc(100% - 40px);
+  padding: 6px 12px;
+  border-radius: 2px;
+  cursor: pointer;
+  color: #4a3725;
+  background: rgba(238, 218, 169, 0.97);
+  box-shadow: 0 4px 10px rgba(8, 5, 3, 0.36);
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-size: clamp(10px, 0.9vw, 14px);
+  line-height: 1.25;
+  animation: door-hint-rise 0.4s ease-out;
+}
+
+.diary-door-clear {
+  flex-shrink: 0;
+  font-style: normal;
+  font-size: 1.05em;
+  line-height: 1;
+  opacity: 0.6;
+}
+
+@keyframes door-hint-rise {
+  from { opacity: 0; transform: translate(-50%, 5px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+/* ── Prompt cards — large paper notes on the desk ── */
+
+.prompt-cards {
+  position: absolute;
+  z-index: 6;
+  left: 50%;
+  top: calc(55% + 25vh);
+  transform: translateX(-50%);
+  width: min(74vw, 900px);
+  text-align: center;
+  pointer-events: none;
+}
+
+.prompt-cards > * {
+  pointer-events: auto;
+}
+
+.prompt-cards-title {
+  margin: 0 0 12px;
+  color: rgba(234, 215, 180, 0.64);
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-size: clamp(12px, 1.05vw, 17px);
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 8px rgba(3, 2, 2, 0.7);
+}
+
+.prompt-cards-lead {
+  margin: 0 0 14px;
+  color: rgba(234, 215, 180, 0.46);
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-size: clamp(11px, 0.95vw, 15px);
+  line-height: 1.45;
+}
+
+.prompt-cards-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px 14px;
+}
+
+.prompt-card {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 330px;
+  padding: 13px 18px;
+  border: 0;
+  border-radius: 2px 3px 2px 3px;
+  cursor: pointer;
+  color: #4a3725;
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-size: clamp(12px, 1.05vw, 17px);
+  line-height: 1.36;
+  text-align: left;
+  transform-origin: center;
+  text-shadow: 0 1px 0 rgba(255, 245, 220, 0.3);
+  background:
+    radial-gradient(ellipse at 26% 16%, rgba(200, 168, 98, 0.16), transparent 60%),
+    radial-gradient(ellipse at 74% 84%, rgba(148, 118, 68, 0.12), transparent 50%),
+    linear-gradient(145deg, #efe3c4 0%, #e4d2a8 52%, #dbc890 100%);
+  box-shadow:
+    0 8px 18px rgba(8, 5, 3, 0.42),
+    inset 0 0 18px rgba(180, 150, 100, 0.12),
+    inset 0 1px 0 rgba(255, 250, 230, 0.3);
+  transition: box-shadow 0.4s ease, filter 0.4s ease;
+}
+
+.prompt-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 60 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.92' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.4'/%3E%3C/svg%3E");
+  opacity: 0.16;
+  mix-blend-mode: multiply;
+}
+
+.prompt-card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 12%;
+  right: 12%;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(8, 5, 3, 0.2);
+  filter: blur(2px);
+  pointer-events: none;
+}
+
+.prompt-card:focus-visible {
+  outline: 2px solid rgba(234, 198, 127, 0.6);
+  outline-offset: 2px;
+}
+
+.prompt-card-icon {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  font-size: 1em;
+  opacity: 0.85;
+}
+
+.prompt-card-text {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Mode Selector — choosing a story path ── */
+
+.mode-selector {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(16px, 2.6vh, 34px);
+  padding: 0 6vw;
+  text-align: center;
+  pointer-events: none;
+}
+
+.mode-selector > * {
+  pointer-events: auto;
+}
+
+.mode-title {
+  margin: 0;
+  color: #f1d8a7;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(22px, 2.5vw, 40px);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 24px rgba(3, 3, 5, 0.7);
+}
+
+.mode-subtitle {
+  margin: 0;
+  max-width: 30ch;
+  color: rgba(234, 220, 190, 0.62);
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-size: clamp(12px, 1.1vw, 17px);
+  line-height: 1.5;
+}
+
+.mode-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(16px, 2vw, 38px);
+  margin-top: clamp(8px, 1.5vh, 20px);
+}
+
+.mode-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: clamp(190px, 22vw, 280px);
+  padding: clamp(22px, 2.6vw, 38px) clamp(18px, 2vw, 30px);
+  border: 1px solid rgba(223, 181, 117, 0.18);
+  border-radius: 2px;
+  cursor: pointer;
+  color: #ead7b1;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(220, 141, 61, 0.06), transparent 60%),
+    rgba(18, 14, 12, 0.42);
+  box-shadow:
+    0 18px 40px rgba(4, 3, 5, 0.5),
+    inset 0 1px 0 rgba(255, 240, 210, 0.05);
+  backdrop-filter: blur(2px);
+  transition: border-color 0.5s ease, background 0.5s ease;
+}
+
+.mode-card:hover,
+.mode-card:focus-visible {
+  border-color: rgba(234, 198, 127, 0.42);
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(220, 141, 61, 0.1), transparent 60%),
+    rgba(24, 19, 16, 0.55);
+  outline: none;
+}
+
+.mode-card-icon {
+  font-size: clamp(26px, 2.8vw, 40px);
+  line-height: 1;
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.4));
+}
+
+.mode-card-title {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(17px, 1.5vw, 23px);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+.mode-card-desc {
+  max-width: 26ch;
+  color: rgba(234, 220, 190, 0.58);
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-size: clamp(11px, 0.95vw, 15px);
+  line-height: 1.5;
+}
+
+.mode-card-rule {
+  width: 30px;
+  height: 1px;
+  margin-top: 2px;
+  background: linear-gradient(90deg, transparent, rgba(216, 170, 101, 0.7), transparent);
+}
+
+/* ── Interview surface: random bar + leave + door hint ── */
+
+.interview-mode {
+  position: static;
+}
+
+.random-bar {
+  position: absolute;
+  z-index: 6;
+  left: clamp(34px, 6.4vw, 112px);
+  top: clamp(170px, 22vh, 250px);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.random-tag {
+  color: rgba(223, 181, 117, 0.5);
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-size: clamp(8px, 0.7vw, 11px);
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-shadow: 0 1px 6px rgba(3, 2, 2, 0.6);
+}
+
+.random-shuffle {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: rgba(234, 215, 180, 0.56);
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-size: clamp(10px, 0.9vw, 14px);
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: color 0.4s ease;
+}
+
+.random-shuffle:hover {
+  color: rgba(234, 215, 180, 0.86);
+}
+
+.interview-leave {
+  position: absolute;
+  z-index: 6;
+  right: clamp(28px, 5vw, 90px);
+  bottom: clamp(22px, 4.5vh, 56px);
+  padding: 0;
+  border: 0;
+  background: none;
+  color: rgba(234, 215, 180, 0.42);
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-size: clamp(9px, 0.82vw, 13px);
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: color 0.45s ease;
+}
+
+.interview-leave:hover {
+  color: rgba(234, 215, 180, 0.74);
+}
+
+/* ── Gentle Prompts — persistent memory doors ── */
+
+.gentle-prompts {
+  position: absolute;
+  z-index: 6;
+  left: clamp(34px, 6.4vw, 112px);
+  top: clamp(440px, 60vh, 580px);
+  width: min(46vw, 680px);
+  pointer-events: none;
+}
+
+.gentle-prompts > * {
+  pointer-events: auto;
+}
+
+.gentle-prompts-label {
+  margin: 0 0 7px;
+  color: rgba(234, 215, 180, 0.5);
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-size: clamp(9px, 0.78vw, 12px);
+  letter-spacing: 0.03em;
+  text-shadow: 0 1px 6px rgba(3, 2, 2, 0.6);
+}
+
+.gentle-prompts-lead {
+  margin: 0 0 9px;
+  color: rgba(234, 215, 180, 0.4);
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-size: clamp(10px, 0.9vw, 14px);
+  line-height: 1.4;
+}
+
+.gentle-prompt-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 9px;
+}
+
+.gentle-door {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  max-width: 280px;
+  padding: 7px 12px 7px 10px;
+  border: 0;
+  border-radius: 1px 2px 1px 2px;
+  cursor: pointer;
+  color: #4a3725;
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-size: clamp(9px, 0.82vw, 13px);
+  line-height: 1.3;
+  text-align: left;
+  transform-origin: center;
+  text-shadow: 0 1px 0 rgba(255, 245, 220, 0.3);
+  background:
+    radial-gradient(ellipse at 26% 16%, rgba(200, 168, 98, 0.16), transparent 60%),
+    radial-gradient(ellipse at 74% 84%, rgba(148, 118, 68, 0.12), transparent 50%),
+    linear-gradient(145deg, #efe3c4 0%, #e4d2a8 52%, #dbc890 100%);
+  box-shadow:
+    0 4px 9px rgba(8, 5, 3, 0.4),
+    0 1px 2px rgba(8, 5, 3, 0.24),
+    inset 0 0 14px rgba(180, 150, 100, 0.1),
+    inset 0 1px 0 rgba(255, 250, 230, 0.25);
+  transition: box-shadow 0.4s ease, filter 0.4s ease;
+}
+
+.gentle-door[data-door-index="0"] { margin-top: 4px; }
+.gentle-door[data-door-index="1"] { margin-top: 0; }
+.gentle-door[data-door-index="2"] { margin-top: 6px; }
+.gentle-door[data-door-index="3"] { margin-top: 2px; }
+
+.gentle-door::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 60 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.92' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.4'/%3E%3C/svg%3E");
+  opacity: 0.16;
+  mix-blend-mode: multiply;
+}
+
+.gentle-door::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 12%;
+  right: 12%;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(8, 5, 3, 0.18);
+  filter: blur(2px);
+  pointer-events: none;
+}
+
+.gentle-door:focus-visible {
+  outline: 2px solid rgba(234, 198, 127, 0.6);
+  outline-offset: 2px;
+}
+
+.gentle-door-icon {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  font-size: 0.95em;
+  opacity: 0.85;
+}
+
+.gentle-door-text {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Door hint (clicking a memory door focuses the paper) ── */
+
+.memory-door-hint {
+  position: absolute;
+  z-index: 3;
+  left: 12px;
+  top: -26px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  max-width: calc(100% - 24px);
+  padding: 4px 9px;
+  border-radius: 1px;
+  cursor: pointer;
+  color: #4a3725;
+  background: rgba(238, 218, 169, 0.96);
+  box-shadow: 0 3px 8px rgba(8, 5, 3, 0.34);
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-size: clamp(9px, 0.8vw, 12px);
+  line-height: 1.25;
+  animation: door-hint-rise 0.4s ease-out;
+}
+
+@keyframes door-hint-rise {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.memory-door-clear {
+  flex-shrink: 0;
+  font-style: normal;
+  font-size: 1.05em;
+  line-height: 1;
+  opacity: 0.6;
+}
+
+/* ── Language Switcher — minimal cinematic 🌐 ── */
+
+.language-switcher {
+  position: fixed;
+  z-index: 60;
+  top: clamp(16px, 2.4vh, 30px);
+  right: clamp(16px, 2.4vw, 34px);
+}
+
+.lang-toggle {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid rgba(223, 181, 117, 0.22);
+  border-radius: 50%;
+  cursor: pointer;
+  color: rgba(234, 215, 180, 0.78);
+  background: rgba(10, 8, 8, 0.4);
+  backdrop-filter: blur(3px);
+  box-shadow: 0 4px 14px rgba(3, 2, 4, 0.4);
+  transition: border-color 0.4s ease, color 0.4s ease;
+}
+
+.lang-toggle:hover {
+  border-color: rgba(234, 198, 127, 0.5);
+  color: rgba(234, 215, 180, 0.95);
+}
+
+.lang-glyph {
+  font-size: 17px;
+  line-height: 1;
+}
+
+.lang-panel {
+  position: absolute;
+  top: 48px;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 132px;
+  padding: 6px;
+  border: 1px solid rgba(223, 181, 117, 0.18);
+  border-radius: 2px;
+  background: rgba(14, 11, 10, 0.92);
+  box-shadow: 0 14px 36px rgba(3, 2, 4, 0.55);
+  backdrop-filter: blur(6px);
+}
+
+.lang-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 9px 12px;
+  border: 0;
+  border-radius: 1px;
+  cursor: pointer;
+  color: rgba(234, 220, 190, 0.78);
+  background: none;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(12px, 1vw, 15px);
+  letter-spacing: 0.02em;
+  text-align: left;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.lang-option:hover {
+  background: rgba(223, 181, 117, 0.1);
+  color: #f1d8a7;
+}
+
+.lang-option.is-active {
+  color: #f1d8a7;
+}
+
+.lang-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #d8aa65;
+  box-shadow: 0 0 6px rgba(216, 170, 101, 0.7);
+}
+
+/* ── Accessibility utility ── */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ── Interview: Recorder Response ── */
+
+.recorder-response-wrap {
+  position: relative;
+}
+
+.recorder-response-text {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(20px, 2.15vw, 36px);
+  font-weight: 400;
+  line-height: 1.28;
+  color: #f3dfb9;
+  text-shadow: 0 2px 24px rgba(3, 3, 5, 0.8);
+}
+
+.recording-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 1.28em;
+  color: rgba(234, 198, 127, 0.7);
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-size: clamp(10px, 0.85vw, 14px);
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.recording-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #c44836;
+  box-shadow: 0 0 8px rgba(196, 72, 54, 0.6);
+  animation: recording-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes recording-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.7); }
+}
+
+.recording-text {
+  line-height: 1;
+}
+
+.response-shimmer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(234, 198, 127, 0.04),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: shimmer-sweep 2.5s ease-in-out infinite;
+}
+
+@keyframes shimmer-sweep {
+  0% { background-position: -100% 0; }
+  100% { background-position: 100% 0; }
+}
+
+/* ── Interview: Story Memory Notebook ── */
+
+.story-memory-mount {
+  position: absolute;
+  z-index: 6;
+  right: clamp(16px, 2.6vw, 56px);
+  top: clamp(118px, 19vh, 226px);
+  width: clamp(158px, 17vw, 250px);
+  pointer-events: none;
+}
+
+.story-memory-mount > * {
+  pointer-events: auto;
+}
+
+.story-memory {
+  padding: 10px 0 0;
+}
+
+.story-memory-header {
+  margin: 0 0 8px;
+  color: rgba(223, 181, 117, 0.5);
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-size: clamp(7px, 0.58vw, 10px);
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.story-memory-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.memory-entry {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 3px 0;
+  color: rgba(234, 220, 190, 0.82);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(10px, 0.92vw, 15px);
+  line-height: 1.4;
+  text-shadow: 0 1px 10px rgba(3, 3, 5, 0.6);
+}
+
+.memory-entry-icon {
+  flex-shrink: 0;
+  width: 1.2em;
+  text-align: center;
+  font-size: clamp(10px, 0.92vw, 15px);
+  opacity: 0.85;
+}
+
+.memory-entry-body {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 8px;
+}
+
+.memory-entry-value {
+  color: #ead7b1;
+}
+
+.memory-entry-type {
+  color: rgba(223, 181, 117, 0.42);
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-size: clamp(7px, 0.55vw, 9px);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ── Textarea disabled state ── */
+
+.memory-page textarea:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.cabin-opening-shutter {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 67% 42%, #39251d, #0a090b 60%),
+    #07080b;
+}
+
+@keyframes recorder-grain {
+  0% {
+    transform: translate3d(-2%, -3%, 0);
+  }
+  25% {
+    transform: translate3d(3%, 1%, 0);
+  }
+  50% {
+    transform: translate3d(-1%, 3%, 0);
+  }
+  75% {
+    transform: translate3d(2%, -2%, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@media (max-aspect-ratio: 4 / 3) {
+  .recorder-scene {
+    min-height: 100svh;
+  }
+
+  .recorder-camera {
+    top: 50%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    transform: translateY(-50%);
+  }
+
+  .recorder-copy {
+    left: 6vw;
+    top: 4vh;
+    width: 52vw;
+  }
+
+  .diary {
+    width: 88vw;
+    height: 42vh;
+    top: 48%;
+    transform: translate(-50%, -50%);
+  }
+
+  .prompt-cards {
+    top: calc(48% + 22vh);
+    width: 90vw;
+  }
+
+  .story-memory-mount {
+    right: 4vw;
+    top: 9vh;
+    width: 38vw;
+  }
+
+  .random-bar {
+    left: 6vw;
+    top: calc(48% - 23vh);
+  }
+}
+
+@media (max-width: 680px) {
+  .recorder-copy {
+    left: 5vw;
+    top: 3vh;
+    width: 72vw;
+  }
+
+  .recorder-copy h1 {
+    font-size: clamp(26px, 9vw, 40px);
+  }
+
+  .recorder-welcome {
+    font-size: clamp(9px, 3vw, 13px);
+  }
+
+  .diary {
+    width: 92vw;
+    height: 40vh;
+    top: 47%;
+    transform: translate(-50%, -50%);
+  }
+
+  .recorder-response-wrap.is-diary .recorder-response-text,
+  .diary-textarea {
+    font-size: clamp(14px, 4.4vw, 20px);
+    line-height: 1.45;
+  }
+
+  .prompt-cards {
+    top: calc(47% + 21vh);
+    width: 94vw;
+  }
+
+  .prompt-card {
+    font-size: clamp(12px, 3.6vw, 16px);
+    padding: 11px 14px;
+  }
+
+  .random-bar {
+    left: 5vw;
+    top: calc(47% - 22vh);
+  }
+
+  .story-memory-mount {
+    right: 4vw;
+    top: 8vh;
+    width: 40vw;
+  }
+
+  .mode-cards {
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .mode-card {
+    width: 84vw;
+    max-width: 340px;
+  }
+
+  .memory-entry {
+    font-size: clamp(9px, 3vw, 13px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .recorder-scene::after {
+    animation: none;
+  }
+}

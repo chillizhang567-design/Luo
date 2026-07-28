@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Video Frame</title>
+<style>
+  body { margin: 0; background: #000; display: flex; align-items: center; justify-content: center; height: 100vh; }
+  video { max-width: 100vw; max-height: 100vh; }
+  #info { position: fixed; top: 10px; left: 10px; color: #fff; font-family: monospace; background: rgba(0,0,0,0.7); padding: 8px 12px; border-radius: 4px; }
+</style>
+</head>
+<body>
+<div id="info">Loading...</div>
+<video id="v" src="/reference-video.mp4"></video>
+<script>
+const v = document.getElementById('v');
+const params = new URLSearchParams(location.search);
+const t = parseFloat(params.get('t') || '0');
+v.addEventListener('loadedmetadata', () => {
+  v.currentTime = Math.min(t, v.duration - 0.1);
+  document.getElementById('info').textContent = `Time: ${t}s / Duration: ${v.duration.toFixed(1)}s`;
+});
+v.addEventListener('seeked', () => {
+  document.getElementById('info').textContent = `Time: ${t}s / Duration: ${v.duration.toFixed(1)}s - Ready`;
+});
+v.load();
+</script>
+</body>
+</html>

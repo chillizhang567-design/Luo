@@ -1,0 +1,126 @@
+{
+  "ocean": {
+    "eyebrow": "DRIFT · A LIVING DOCUMENTARY",
+    "title": "Some stories begin quietly.",
+    "subtitle": "Every person deserves a documentary.",
+    "beginLabel": "Begin",
+    "enteredMessage": "Take your time. Your story is already here."
+  },
+  "recorder": {
+    "kicker": "Chapter 02",
+    "title": "The Recorder",
+    "yourWords": "Your words",
+    "welcome1": "I want to record today's you.",
+    "welcome2": "No need to prepare answers.",
+    "welcome3": "Begin wherever you feel comfortable.",
+    "introQuestion": "Tell me — what is the first thing that comes to you?",
+    "placeholder": "Begin with what you can see...",
+    "caretIdle": "take your time",
+    "caretReady": "press ↵ to record",
+    "recording": "Recording",
+    "memoriesFound": "Memories found",
+    "memoryDoorsHint": "Need a little help?",
+    "doorsLead": "You mentioned {thing}.",
+    "doorHintTitle": "A door you might open",
+    "modeTitle": "How would you like to begin?",
+    "modeSubtitle": "There is no wrong way. Choose a path.",
+    "modeRandomTitle": "Random Memory",
+    "modeRandomDesc": "Let chance open a door. We'll wander through whatever surfaces.",
+    "modeGuidedTitle": "Guided Interview",
+    "modeGuidedDesc": "I'll lead you gently — scene, then memory, then feeling, then meaning.",
+    "modeRandomTag": "a memory door",
+    "shuffle": "another door",
+    "leave": "← choose another path",
+    "openingQuestion": "If your life was a documentary,\nwhat would the first scene be?",
+    "fallback": "Take your time. Even a single image is enough to begin."
+  },
+  "doors": {
+    "place": [
+      "What did that place look like?",
+      "What sounds did you hear there?"
+    ],
+    "person": [
+      "Who was there with you?",
+      "What did they say or do?"
+    ],
+    "emotion": [
+      "How do you feel when you remember it?",
+      "Where in your body do you notice it?"
+    ],
+    "moment": [
+      "What happened just before?",
+      "What changed after that moment?"
+    ],
+    "scene": [
+      "If the camera stayed, what would it catch?",
+      "What sat at the edge of the frame?"
+    ],
+    "meaning": [
+      "Why do you think it stayed with you?",
+      "What does it mean to you now?"
+    ]
+  },
+  "doorsDefault": [
+    "Tell me more about that.",
+    "What else comes to mind?",
+    "Stay with that image a moment.",
+    "Is there a detail you'd add?"
+  ],
+  "doorTemplates": {
+    "place": [
+      "What did {thing} look like?",
+      "What sound do you hear in {thing}?",
+      "What time of day was it there?",
+      "Who else was in {thing} with you?"
+    ],
+    "person": [
+      "What did {thing} look like?",
+      "What small habit of theirs do you remember?",
+      "Where did you spend time together?",
+      "What is one thing they always said?"
+    ],
+    "emotion": [
+      "When did you first feel {thing}?",
+      "Where in your body does {thing} live?",
+      "What made {thing} rise up?",
+      "What colour would {thing} be?"
+    ],
+    "moment": [
+      "What happened just before {thing}?",
+      "What did you see in that moment?",
+      "Who was there with you?",
+      "What changed after it?"
+    ],
+    "scene": [
+      "If the camera stayed on {thing}, what would it catch?",
+      "What sits at the edge of that frame?",
+      "What is the light like in it?",
+      "What sound belongs to it?"
+    ],
+    "meaning": [
+      "Is there an image that carries {thing}?",
+      "When did you first understand it?",
+      "Who was part of that realization?",
+      "What does it mean to you now?"
+    ]
+  },
+  "randomSeeds": {
+    "childhood": "What is one memory from when you were small?",
+    "places": "Is there a place that still lives in your mind?",
+    "people": "Who is someone you've never quite forgotten?",
+    "turningPoints": "When did your life quietly change direction?",
+    "forgotten": "What small moment do you almost remember?"
+  },
+  "randomCategories": {
+    "childhood": "childhood",
+    "places": "places",
+    "people": "people",
+    "turningPoints": "turning points",
+    "forgotten": "forgotten moments"
+  },
+  "language": {
+    "label": "Language",
+    "en": "English",
+    "zh": "中文"
+  }
+}

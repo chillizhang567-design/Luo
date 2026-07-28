@@ -1,0 +1,781 @@
+/* ============================================
+   PORTFOLIO STYLES
+   ============================================ */
+
+/* ---- Root & Reset ---- */
+.portfolio-root {
+  background: #050c19;
+  color: #fff0bd;
+  font-family: Georgia, "Times New Roman", serif;
+  position: relative;
+}
+
+.portfolio-root::selection,
+.portfolio-root *::selection {
+  background: #e8ad68;
+  color: #050c19;
+}
+
+/* ---- Navigation ---- */
+.portfolio-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 3rem;
+  border-bottom: 1px solid transparent;
+  backdrop-filter: blur(10px);
+  transition: border-color 0.3s ease;
+}
+
+.portfolio-nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: #fff0bd;
+  text-decoration: none;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+}
+
+.portfolio-nav-logo:hover {
+  color: #ffd68a;
+}
+
+.logo-mark {
+  font-size: 1.4rem;
+  display: inline-block;
+  animation: logoSpin 20s linear infinite;
+}
+
+@keyframes logoSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.logo-text {
+  font-family: Georgia, serif;
+  font-weight: 400;
+}
+
+.portfolio-nav-links {
+  display: flex;
+  gap: 2.5rem;
+}
+
+.portfolio-nav-link {
+  color: rgba(255, 240, 189, 0.6);
+  text-decoration: none;
+  font-family: "Courier New", monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.portfolio-nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #e8ad68;
+  transition: width 0.3s ease;
+}
+
+.portfolio-nav-link:hover {
+  color: #fff0bd;
+}
+
+.portfolio-nav-link:hover::after {
+  width: 100%;
+}
+
+/* ---- Hero Section ---- */
+.portfolio-hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #050c19;
+}
+
+.portfolio-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 30%,
+    rgba(5, 12, 25, 0.55) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-bg-gradient {
+  position: absolute;
+  inset: -10%;
+  background:
+    radial-gradient(circle at 30% 40%, rgba(255, 212, 140, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 70% 60%, rgba(100, 120, 200, 0.06) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 0 1.5rem;
+  max-width: 900px;
+}
+
+.hero-content-centered {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: none;
+  padding: 0 2rem;
+}
+
+.hero-greeting {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0 0 1.5rem;
+  color: #fff0bd;
+  text-shadow: 0 0 60px rgba(5, 12, 25, 0.8),
+    0 0 120px rgba(5, 12, 25, 0.4);
+}
+
+.hero-typewriter {
+  font-family: Georgia, serif;
+  font-size: clamp(0.9rem, 1.5vw, 1.25rem);
+  line-height: 1.6;
+  color: rgba(255, 240, 189, 0.8);
+  margin: 0;
+  min-height: 2em;
+  text-shadow: 0 0 20px rgba(5, 12, 25, 0.8);
+  letter-spacing: 0.01em;
+}
+
+.typewriter-text {
+  display: inline;
+}
+
+.typewriter-cursor {
+  display: inline-block;
+  color: rgba(232, 173, 104, 0.9);
+  font-weight: 300;
+  margin-left: 1px;
+  animation: none;
+  opacity: 1;
+}
+
+.typewriter-cursor.blink {
+  animation: cursorBlink 1s ease-in-out infinite;
+}
+
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.hero-content::before {
+  content: "";
+  position: absolute;
+  inset: -40px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(5, 12, 25, 0.7) 0%,
+    rgba(5, 12, 25, 0.4) 50%,
+    transparent 80%
+  );
+  pointer-events: none;
+  z-index: -1;
+  filter: blur(20px);
+}
+
+.hero-eyebrow {
+  font-family: "Courier New", monospace;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  color: rgba(232, 173, 104, 0.85);
+  margin: 0 0 2rem;
+  text-shadow: 0 0 30px rgba(5, 12, 25, 0.8);
+}
+
+.hero-title {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  font-size: clamp(3rem, 8vw, 7.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  margin: 0 0 2rem;
+  color: #fff0bd;
+  text-shadow: 0 0 60px rgba(5, 12, 25, 0.8),
+    0 0 120px rgba(5, 12, 25, 0.4);
+}
+
+.hero-title-line {
+  display: block;
+}
+
+.hero-title-accent {
+  color: #e8ad68;
+  font-style: italic;
+}
+
+.hero-title-italic {
+  font-style: italic;
+  color: rgba(255, 240, 189, 0.8);
+}
+
+.hero-subtitle {
+  font-family: Georgia, serif;
+  font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+  line-height: 1.7;
+  color: rgba(255, 240, 189, 0.75);
+  margin: 0;
+  text-shadow: 0 0 20px rgba(5, 12, 25, 0.8);
+}
+
+.hero-scroll-indicator {
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  color: rgba(255, 240, 189, 0.55);
+  font-family: "Courier New", monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  z-index: 10;
+  text-shadow: 0 0 20px rgba(5, 12, 25, 0.8);
+}
+
+.scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, rgba(255, 240, 189, 0.4), transparent);
+}
+
+.hero-decor {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero-decor-1 {
+  top: 10%;
+  right: 8%;
+  width: 280px;
+  height: 280px;
+  border: 1px solid rgba(232, 173, 104, 0.12);
+}
+
+.hero-decor-2 {
+  bottom: 15%;
+  left: 5%;
+  width: 160px;
+  height: 160px;
+  border: 1px solid rgba(107, 124, 224, 0.15);
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+}
+
+/* ---- Section Labels ---- */
+.about-label {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 3rem;
+}
+
+.about-label-num {
+  font-family: "Courier New", monospace;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #e8ad68;
+}
+
+.about-label-text {
+  font-family: "Courier New", monospace;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255, 240, 189, 0.5);
+}
+
+/* ---- About Section ---- */
+.portfolio-about {
+  padding: 8rem 3rem;
+  position: relative;
+}
+
+.about-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+.about-heading {
+  font-family: Georgia, serif;
+  font-size: clamp(1.8rem, 3.2vw, 3rem);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #fff0bd;
+  margin: 0 0 2.5rem;
+}
+
+.about-heading em {
+  color: #e8ad68;
+  font-style: italic;
+}
+
+.about-accent {
+  color: #e8ad68;
+}
+
+.about-body p {
+  font-family: Georgia, serif;
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: rgba(255, 240, 189, 0.65);
+  margin: 0 0 1.5rem;
+  max-width: 560px;
+}
+
+.about-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 240, 189, 0.08);
+}
+
+.about-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.about-meta-label {
+  font-family: "Courier New", monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 240, 189, 0.35);
+}
+
+.about-meta-value {
+  font-family: Georgia, serif;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: rgba(255, 240, 189, 0.75);
+}
+
+/* ---- Works Section ---- */
+.portfolio-works {
+  padding: 8rem 3rem;
+  position: relative;
+}
+
+.works-header {
+  max-width: 1200px;
+  margin: 0 auto 5rem;
+}
+
+.works-heading {
+  font-family: Georgia, serif;
+  font-size: clamp(2rem, 3.5vw, 3.2rem);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #fff0bd;
+  margin: 0 0 2.5rem;
+}
+
+.works-heading-accent {
+  color: #e8ad68;
+  font-style: italic;
+}
+
+.works-filters {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.works-filter {
+  padding: 0.55rem 1.2rem;
+  background: transparent;
+  border: 1px solid rgba(255, 240, 189, 0.15);
+  border-radius: 999px;
+  color: rgba(255, 240, 189, 0.55);
+  font-family: "Courier New", monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.works-filter:hover {
+  border-color: rgba(232, 173, 104, 0.4);
+  color: #fff0bd;
+}
+
+.works-filter.active {
+  background: rgba(232, 173, 104, 0.15);
+  border-color: #e8ad68;
+  color: #e8ad68;
+}
+
+.works-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
+}
+
+/* Work Card */
+.work-card {
+  position: relative;
+  background: rgba(255, 240, 189, 0.02);
+  border: 1px solid rgba(255, 240, 189, 0.06);
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color 0.4s ease, transform 0.4s ease;
+}
+
+.work-card:hover {
+  border-color: rgba(232, 173, 104, 0.25);
+  transform: translateY(-4px);
+}
+
+.work-card-visual {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.work-card-shape {
+  width: 50%;
+  height: 50%;
+  border-radius: 40% 60% 60% 40% / 50% 40% 60% 50%;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(20px);
+}
+
+.work-card-year {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-family: "Courier New", monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: rgba(5, 12, 25, 0.7);
+  font-weight: 700;
+}
+
+.work-card-info {
+  padding: 1.75rem;
+}
+
+.work-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.work-card-title {
+  font-family: Georgia, serif;
+  font-size: 1.35rem;
+  font-weight: 400;
+  color: #fff0bd;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.work-card-arrow {
+  font-size: 1.1rem;
+  color: #e8ad68;
+}
+
+.work-card-desc {
+  font-family: Georgia, serif;
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: rgba(255, 240, 189, 0.55);
+  margin: 0 0 1.25rem;
+}
+
+.work-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.work-card-tag {
+  font-family: "Courier New", monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  padding: 0.3rem 0.65rem;
+  background: rgba(255, 240, 189, 0.06);
+  border-radius: 999px;
+  color: rgba(255, 240, 189, 0.5);
+}
+
+.work-card-hover-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  transform-origin: left;
+}
+
+/* ---- Contact Section ---- */
+.portfolio-contact {
+  padding: 8rem 3rem 4rem;
+  position: relative;
+  border-top: 1px solid rgba(255, 240, 189, 0.05);
+}
+
+.contact-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.contact-heading {
+  font-family: Georgia, serif;
+  font-size: clamp(2.2rem, 4.5vw, 4rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: #fff0bd;
+  margin: 0 0 2rem;
+}
+
+.contact-heading-accent {
+  color: #e8ad68;
+  font-style: italic;
+}
+
+.contact-description {
+  font-family: Georgia, serif;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: rgba(255, 240, 189, 0.55);
+  max-width: 580px;
+  margin: 0 0 4rem;
+}
+
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid rgba(255, 240, 189, 0.08);
+}
+
+.contact-link {
+  display: grid;
+  grid-template-columns: 120px 1fr auto;
+  align-items: center;
+  gap: 2rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid rgba(255, 240, 189, 0.06);
+  text-decoration: none;
+  transition: background-color 0.3s ease, padding 0.3s ease;
+  position: relative;
+}
+
+.contact-link::before {
+  content: "";
+  position: absolute;
+  left: -1.5rem;
+  right: -1.5rem;
+  inset: 0;
+  background: rgba(232, 173, 104, 0.04);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.contact-link:hover::before {
+  opacity: 1;
+}
+
+.contact-link:hover {
+  padding-left: 1rem;
+}
+
+.contact-link-label {
+  font-family: "Courier New", monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255, 240, 189, 0.4);
+  position: relative;
+  z-index: 1;
+}
+
+.contact-link-value {
+  font-family: Georgia, serif;
+  font-size: 1.15rem;
+  color: #fff0bd;
+  position: relative;
+  z-index: 1;
+}
+
+.contact-link-arrow {
+  font-size: 1.1rem;
+  color: #e8ad68;
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.contact-link:hover .contact-link-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.contact-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 240, 189, 0.08);
+  font-family: "Courier New", monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: rgba(255, 240, 189, 0.3);
+}
+
+.contact-footer-available {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.contact-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #7ce0a8;
+  box-shadow: 0 0 8px rgba(124, 224, 168, 0.5);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(0.85); }
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 900px) {
+  .portfolio-nav {
+    padding: 1rem 1.5rem;
+  }
+
+  .portfolio-nav-links {
+    gap: 1.25rem;
+  }
+
+  .portfolio-about,
+  .portfolio-works,
+  .portfolio-contact {
+    padding: 5rem 1.5rem;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .works-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .contact-link {
+    grid-template-columns: 90px 1fr auto;
+    gap: 1rem;
+  }
+
+  .contact-footer {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .portfolio-nav {
+    padding: 0.85rem 1rem;
+  }
+
+  .portfolio-nav-links {
+    gap: 1rem;
+  }
+
+  .portfolio-nav-link {
+    font-size: 0.68rem;
+  }
+
+  .portfolio-about,
+  .portfolio-works,
+  .portfolio-contact {
+    padding: 4rem 1rem;
+  }
+
+  .hero-decor-1 {
+    width: 180px;
+    height: 180px;
+  }
+
+  .hero-decor-2 {
+    width: 100px;
+    height: 100px;
+  }
+
+  .work-card-info {
+    padding: 1.25rem;
+  }
+}
