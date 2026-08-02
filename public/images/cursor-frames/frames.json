@@ -1,0 +1,20 @@
+[
+  {
+    "frame": 0,
+    "width": 48,
+    "height": 48,
+    "hotspotX": 0,
+    "hotspotY": 0,
+    "delay": 30,
+    "file": "frame-00.png"
+  },
+  {
+    "frame": 1,
+    "width": 48,
+    "height": 48,
+    "hotspotX": 0,
+    "hotspotY": 0,
+    "delay": 30,
+    "file": "frame-01.png"
+  }
+]
