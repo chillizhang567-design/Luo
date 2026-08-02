@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useRef, useEffect, useState, useMemo, useCallback } from "react";
 import {
@@ -17,9 +17,9 @@ import {
   SphereGeometry,
   AmbientLight,
   PointLight,
-  ACESFilmicToneMapping,
+  ACESFilmicToneMapping, DynamicDrawUsage,
   Raycaster,
-  Plane,
+  Plane, Matrix4,
 } from "three";
 import { cn } from "@/lib/utils";
 
@@ -292,7 +292,7 @@ export function InteractiveHeroBackgrounds({
     });
 
     three.renderer.toneMapping = ACESFilmicToneMapping;
-    three.renderer.toneMappingEx = 1.2;
+    three.renderer.toneMappingExposure = 1.2;
 
     const ambientLight = new AmbientLight(0xffffff, 0.4);
     three.scene.add(ambientLight);
@@ -324,7 +324,7 @@ export function InteractiveHeroBackgrounds({
       sphereMaterial,
       sphereCount
     );
-    instancedMesh.instanceMatrix.setUsage(4);
+    instancedMesh.instanceMatrix.setUsage(DynamicDrawUsage);
     three.scene.add(instancedMesh);
 
     const dummy = new Vector3();
@@ -336,7 +336,7 @@ export function InteractiveHeroBackgrounds({
       const z = MathUtils.randFloatSpread(5);
       dummy.set(x, y, z);
       basePositions.push(dummy.clone());
-      dummy.toArray(instancedMesh.matrix, i * 16);
+      const mat = new Matrix4().setPosition(dummy); instancedMesh.setMatrixAt(i, mat);
     }
     instancedMesh.instanceMatrix.needsUpdate = true;
 
@@ -377,7 +377,7 @@ export function InteractiveHeroBackgrounds({
         dummy.x += (dummy.x - intersectPoint.x) * repulsion * 0.3;
         dummy.y += (dummy.y - intersectPoint.y) * repulsion * 0.3;
 
-        dummy.toArray(instancedMesh.matrix, i * 16);
+        const mat = new Matrix4().setPosition(dummy); instancedMesh.setMatrixAt(i, mat);
       }
       instancedMesh.instanceMatrix.needsUpdate = true;
     };

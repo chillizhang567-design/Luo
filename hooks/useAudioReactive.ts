@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useCallback, useEffect, useRef, useState, type RefObject } from "react";
 
@@ -65,7 +65,7 @@ export function useAudioReactive(options?: UseAudioReactiveOptions) {
   const [isActive, setIsActive] = useState(false);
 
   const smoothSet = useCallback(
-    (param: AudioParam, target: number, now: AudioTimestamp, slide: number) => {
+    (param: AudioParam, target: number, now: number, slide: number) => {
       param.cancelScheduledValues(now);
       param.setValueAtTime(param.value, now);
       param.linearRampToValueAtTime(target, now + slide);
@@ -73,7 +73,7 @@ export function useAudioReactive(options?: UseAudioReactiveOptions) {
     []
   );
 
-  const openMasterEnv = useCallback((ctxNow: AudioContext) => {
+  const openMasterEnv = useCallback((ctxNow: number) => {
     const env = masterEnvRef.current;
     if (!env) return;
     env.gain.cancelScheduledValues(ctxNow);
@@ -81,7 +81,7 @@ export function useAudioReactive(options?: UseAudioReactiveOptions) {
     env.gain.linearRampToValueAtTime(0.48, ctxNow + 0.2);
   }, []);
 
-  const closeMasterEnv = useCallback((ctxNow: AudioContext) => {
+  const closeMasterEnv = useCallback((ctxNow: number) => {
     const env = masterEnvRef.current;
     if (!env) return;
     env.gain.cancelScheduledValues(ctxNow);

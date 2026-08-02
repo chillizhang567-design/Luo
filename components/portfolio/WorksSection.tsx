@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion } from "framer-motion";
 import { useState } from "react";
@@ -57,8 +57,7 @@ function WorkCard({ work, index }: { work: Work; index: number }) {
         </div>
       </div>
 
-      <div
-        className="work-card-hover-bar"
+      <motion.div className="work-card-hover-bar"
         style={{ backgroundColor: work.color }}
         animate={{ scaleX: isHovered ? 1 : 0 }}
         transition={{ duration: 0.4, ease: "easeOut" }}
@@ -105,6 +104,7 @@ export default function WorksSection() {
           ))}
         </div>
       </motion.div>
+
 
       <motion.div className="works-grid" layout>
         {filtered.map((work, i) => (

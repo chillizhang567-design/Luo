@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useCallback, useEffect, useRef, useState, type RefObject } from "react";
 
@@ -173,9 +173,7 @@ export default function WaveScene({ className, audioTargetRef }: WaveSceneProps)
 
   const setRefs = useCallback((el: HTMLDivElement | null) => {
     containerRef.current = el;
-    if (audioTargetRef) {
-      audioTargetRef.current = el;
-    }
+    if (audioTargetRef && el) { audioTargetRef.current = el; }
   }, [audioTargetRef]);
   const [threeReady, setThreeReady] = useState(false);
 

@@ -5,7 +5,7 @@ import WaveScene from "@/components/three/WaveScene";
 import { useAudioReactive } from "@/hooks/useAudioReactive";
 
 export default function WaveDemoPage() {
-  const waveRef = useRef<HTMLDivElement>(null);
+  const waveRef = useRef<HTMLDivElement>(null!);
   const { isActive, toggle, dispose } = useAudioReactive({ targetRef: waveRef });
 
   useEffect(() => {

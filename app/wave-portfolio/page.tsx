@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import "./wave-portfolio.css";
 import { useEffect, useRef, useState, useCallback } from "react";
@@ -636,7 +636,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
   const rotateX = useTransform(sy, [-5, 5], [5, -5]);
   const rotateY = useTransform(sx, [-5, 5], [-5, 5]);
   const hoverLift = useTransform(sy, [-5, 5], [8, -8]);
-  const hoverScale = useTransform([sx, sy], ([x, y]) => 1 + (Math.abs(x) + Math.abs(y)) * 0.004);
+  const hoverScale = useTransform([sx, sy], ([x, y]: number[]) => 1 + (Math.abs(x) + Math.abs(y)) * 0.004);
 
   const glossX = useTransform(sx, [-5, 5], ["20%", "80%"]);
   const glossY = useTransform(sy, [-5, 5], ["20%", "80%"]);
@@ -1120,7 +1120,6 @@ const [embedLoading, setEmbedLoading] = useState(true);
                   className="retro-embed-frame"
                   src={embed.src}
                   loading="eager"
-                  fetchPriority="high"
                   title={embed.title || project.title}
                   allowFullScreen
                   onLoad={() => setEmbedLoading(false)}
@@ -1579,7 +1578,7 @@ function RetroNotepad() {
 function RetroCalculator() {
   const [display, setDisplay] = useState("0");
   const [prev, setPrev] = useState<number | null>(null);
-  const [op, setOp] = useState<string | null>(null);
+  const [op, setOp] = useState<"+" | "-" | "×" | "÷" | null>(null);
   const [resetNext, setResetNext] = useState(false);
 
   const input = (d: string) => {
@@ -1587,7 +1586,7 @@ function RetroCalculator() {
     else { setDisplay(display === "0" ? d : display + d); }
   };
   const clear = () => { setDisplay("0"); setPrev(null); setOp(null); };
-  const setOperator = (o: string) => {
+  const setOperator = (o: "+" | "-" | "×" | "÷") => {
     if (prev !== null && op) compute();
     else setPrev(parseFloat(display));
     setOp(o); setResetNext(true);
@@ -1795,7 +1794,7 @@ function RetroDesktop({ projects }: { projects: Project[] }) {
   const [wins, setWins] = useState<WinState[]>([]);
   const [zTop, setZTop] = useState(10);
   const [drag, setDrag] = useState<{ id: number; dx: number; dy: number } | null>(null);
-  const [selectedFolder, setSelectedFolder] = useState<number | null>(null);
+  const [selectedFolder, setSelectedFolder] = useState<string | null>(null);
   const [fullscreenWinId, setFullscreenWinId] = useState<number | null>(null);
   const [iconPositions, setIconPositions] = useState<Record<string, { top: number; left: number }>>(() => {
     if (typeof window !== "undefined" && window.localStorage) {
@@ -2338,7 +2337,7 @@ function RetroDesktop({ projects }: { projects: Project[] }) {
                     const defaultTop = 20 + (i % 4) * 90;
                     const defaultLeft = 20 + Math.floor(i / 4) * 100;
                     const pos = getIconPosition(key, defaultTop, defaultLeft);
-                    const isSelected = selectedFolder === p.id;
+                    const isSelected = String(selectedFolder) === String(p.id);
                     const isDragging = iconDrag?.key === key && iconDrag.moved;
                     return (
                       <div
@@ -2347,12 +2346,12 @@ function RetroDesktop({ projects }: { projects: Project[] }) {
                         style={{ top: pos.top, left: pos.left, cursor: "grab" }}
                         onPointerDown={(e) => onIconDragStart(key, e)}
                         onPointerMove={onIconDragMove}
-                        onPointerUp={(e) => onIconDragEnd(e)}
-                        onPointerCancel={(e) => onIconDragEnd(e)}
+                        onPointerUp={() => onIconDragEnd()}
+                        onPointerCancel={() => onIconDragEnd()}
                         onClick={(e) => {
                           if (iconDrag?.moved) return;
                           e.stopPropagation();
-                          setSelectedFolder(p.id);
+                          setSelectedFolder(String(p.id));
                         }}
                         onDoubleClick={() => { playClick(); openWindow(p); }}
                         title={`Double-click to open ${p.title}`}
@@ -2373,7 +2372,7 @@ function RetroDesktop({ projects }: { projects: Project[] }) {
                     const defaultTop = 20 + ((i + offset) % 4) * 90;
                     const defaultLeft = 20 + Math.floor((i + offset) / 4) * 100;
                     const pos = getIconPosition(key, defaultTop, defaultLeft);
-                    const isAppSelected = selectedFolder === `app-${app.type}`;
+                    const isAppSelected = String(selectedFolder ?? "") === app.type;
                     const isDragging = iconDrag?.key === key && iconDrag.moved;
                     return (
                       <div
@@ -2382,12 +2381,12 @@ function RetroDesktop({ projects }: { projects: Project[] }) {
                         style={{ top: pos.top, left: pos.left, cursor: "grab" }}
                         onPointerDown={(e) => onIconDragStart(key, e)}
                         onPointerMove={onIconDragMove}
-                        onPointerUp={(e) => onIconDragEnd(e)}
-                        onPointerCancel={(e) => onIconDragEnd(e)}
+                        onPointerUp={() => onIconDragEnd()}
+                        onPointerCancel={() => onIconDragEnd()}
                         onClick={(e) => {
                           if (iconDrag?.moved) return;
                           e.stopPropagation();
-                          setSelectedFolder(`app-${app.type}`);
+                          setSelectedFolder(app.type);
                         }}
                         onDoubleClick={() => { playClick(); openApp(app.type); }}
                         title={`Double-click to open ${app.title}`}
@@ -2557,7 +2556,7 @@ function makeFishes() {
 }
 
 export default function WavePortfolioPage() {
-  const waveRef = useRef<HTMLDivElement>(null);
+  const waveRef = useRef<HTMLDivElement>(null!);
   const { isActive, toggle, dispose } = useAudioReactive({ targetRef: waveRef });
   const { displayed: greetingText, done: greetingDone } = useTypewriter(GREETING_TEXT, 0);
   const { displayed, done } = useTypewriter(SUBTITLE_TEXT, GREETING_TEXT.length * 55 + 500);
