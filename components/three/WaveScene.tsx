@@ -208,10 +208,10 @@ export default function WaveScene({ className, audioTargetRef }: WaveSceneProps)
     camera.position.set(0, 0, 6);
     camera.lookAt(0, 0, 0);
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(width, height);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.setClearColor(0x0a0a1a, 1);
+    renderer.setClearColor(0x0a0a1a, 0);
     container.appendChild(renderer.domElement);
 
     const geometry = new THREE.PlaneGeometry(10, 7, 256, 256);

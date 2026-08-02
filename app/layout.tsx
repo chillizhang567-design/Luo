@@ -16,6 +16,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="dns-prefetch" href="https://embed.figma.com" />
+        <link rel="preconnect" href="https://embed.figma.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://www.figma.com" />
+        <link rel="preconnect" href="https://www.figma.com" crossOrigin="anonymous" />
+      </head>
       <body>
         <Providers>{children}</Providers>
       </body>
