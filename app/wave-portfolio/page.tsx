@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import "./wave-portfolio.css";
 import { useEffect, useRef, useState, useCallback } from "react";
@@ -1119,7 +1119,7 @@ const [embedLoading, setEmbedLoading] = useState(true);
                 <iframe
                   className="retro-embed-frame"
                   src={embed.src}
-                  loading="eager"
+                  {...({ loading: "eager", fetchPriority: "high" } as React.IframeHTMLAttributes<HTMLIFrameElement>)}
                   title={embed.title || project.title}
                   allowFullScreen
                   onLoad={() => setEmbedLoading(false)}
@@ -2966,6 +2966,14 @@ export default function WavePortfolioPage() {
           </motion.div>
         </motion.div>
       )}
+
+      {/* 隐藏预加载 iframe —— 预热 Figma 原型，加速点单交互 */}
+      <iframe
+        src="https://embed.figma.com/proto/fuwUuSdyfemaX4QBdYjHS1/Untitled?page-id=0%3A1&starting-point-node-id=62%3A92&embed-host=share"
+        style={{ position: "fixed", top: "-1px", left: "-1px", width: "1px", height: "1px", opacity: 0.01, pointerEvents: "none" }}
+        title="prewarm-figma"
+        aria-hidden={true}
+      />
     </div>
   );
 }
