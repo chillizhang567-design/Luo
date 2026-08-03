@@ -1,5 +1,5 @@
-import Portfolio from "@/components/portfolio/Portfolio";
+import { redirect } from "next/navigation";
 
 export default function Home() {
-  return <Portfolio />;
+  redirect("/wave-portfolio");
 }
